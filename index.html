@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>LEINN | Neon Portfolio</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#05000b;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* BACKGROUND */
+
+body::before{
+    content:'';
+    position:fixed;
+    inset:0;
+
+    background:
+    radial-gradient(circle at top left,#ff008055,transparent 25%),
+    radial-gradient(circle at bottom right,#ff00cc44,transparent 25%),
+    linear-gradient(to bottom,#090010,#030005);
+
+    z-index:-3;
+}
+
+body::after{
+    content:'';
+    position:fixed;
+    inset:0;
+
+    background-image:
+    linear-gradient(rgba(255,0,140,.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,0,140,.03) 1px,transparent 1px);
+
+    background-size:45px 45px;
+
+    z-index:-2;
+}
+
+/* PARTICLES */
+
+.particle{
+    position:fixed;
+    width:5px;
+    height:5px;
+    background:#ff008c;
+    border-radius:50%;
+    box-shadow:0 0 15px #ff008c;
+    animation:float 8s linear infinite;
+    z-index:-1;
+}
+
+@keyframes float{
+    from{
+        transform:translateY(100vh);
+        opacity:0;
+    }
+    20%{
+        opacity:1;
+    }
+    to{
+        transform:translateY(-10vh);
+        opacity:0;
+    }
+}
+
+.container{
+    width:90%;
+    max-width:1400px;
+    margin:auto;
+}
+
+/* NAVBAR */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:999;
+    backdrop-filter:blur(14px);
+    background:rgba(0,0,0,.35);
+    border-bottom:1px solid #ff008c33;
+}
+
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 0;
+}
+
+.logo{
+    font-size:34px;
+    font-weight:800;
+    color:#ff4db8;
+    text-shadow:
+    0 0 10px #ff008c,
+    0 0 25px #ff008c;
+}
+
+.menu{
+    display:flex;
+    gap:40px;
+    align-items:center;
+}
+
+.menu a{
+    text-decoration:none;
+    color:white;
+    font-weight:500;
+    transition:.3s;
+    position:relative;
+}
+
+.menu a::after{
+    content:'';
+    position:absolute;
+    left:0;
+    bottom:-8px;
+    width:0%;
+    height:2px;
+    background:#ff008c;
+    transition:.3s;
+    box-shadow:0 0 10px #ff008c;
+}
+
+.menu a:hover::after{
+    width:100%;
+}
+
+.menu a:hover{
+    color:#ff4db8;
+}
+
+.follow-btn{
+    padding:14px 28px;
+    border-radius:14px;
+    text-decoration:none;
+    color:white;
+    font-weight:600;
+
+    background:linear-gradient(45deg,#ff008c,#ff4fd8);
+
+    box-shadow:
+    0 0 15px #ff008c,
+    0 0 40px #ff008c55;
+
+    transition:.3s;
+}
+
+.follow-btn:hover{
+    transform:translateY(-4px) scale(1.05);
+}
+
+/* HERO */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    gap:70px;
+    padding:70px 0;
+    flex-wrap:wrap;
+}
+
+.hero-image{
+    flex:1;
+    min-width:320px;
+    display:flex;
+    justify-content:center;
+}
+
+.hero-image img{
+    width:100%;
+    max-width:550px;
+
+    border-radius:30px;
+    border:2px solid #ff008c;
+
+    box-shadow:
+    0 0 20px #ff008c,
+    0 0 80px #ff008c66,
+    inset 0 0 30px #ff008c55;
+
+    animation:glow 3s infinite alternate;
+}
+
+@keyframes glow{
+    from{
+        box-shadow:
+        0 0 20px #ff008c,
+        0 0 50px #ff008c66;
+    }
+
+    to{
+        box-shadow:
+        0 0 35px #ff4db8,
+        0 0 100px #ff008caa;
+    }
+}
+
+.hero-text{
+    flex:1;
+    min-width:320px;
+}
+
+.hero-text h3{
+    color:#ff4db8;
+    font-size:32px;
+    margin-bottom:10px;
+}
+
+.hero-text h1{
+    font-size:110px;
+    line-height:1;
+    margin-bottom:20px;
+
+    color:white;
+
+    text-shadow:
+    0 0 10px #fff,
+    0 0 20px #ff008c,
+    0 0 60px #ff008c;
+}
+
+.role{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+
+    padding:16px 28px;
+    margin-bottom:30px;
+
+    border:1px solid #ff008c;
+    border-radius:16px;
+
+    color:#ff4db8;
+
+    background:rgba(255,0,140,.08);
+
+    box-shadow:
+    0 0 20px #ff008c33,
+    inset 0 0 20px #ff008c22;
+}
+
+.hero-text p{
+    color:#ddd;
+    font-size:18px;
+    line-height:2;
+    margin-bottom:35px;
+}
+
+.tiktok{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:25px;
+
+    border-radius:22px;
+    border:1px solid #ff008c55;
+
+    background:rgba(255,0,140,.06);
+
+    box-shadow:
+    0 0 20px #ff008c22,
+    inset 0 0 20px #ff008c11;
+}
+
+.tiktok-left{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.tiktok-icon{
+    font-size:55px;
+}
+
+.tiktok-text h2{
+    font-size:34px;
+}
+
+/* CARDS */
+
+.section{
+    margin-bottom:50px;
+}
+
+.grid-2{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+}
+
+.grid-3{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:30px;
+}
+
+.card{
+    background:rgba(255,255,255,.03);
+
+    border:1px solid #ff008c44;
+    border-radius:28px;
+
+    padding:35px;
+
+    backdrop-filter:blur(12px);
+
+    box-shadow:
+    0 0 25px #ff008c11,
+    inset 0 0 25px #ff008c11;
+
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:
+    0 0 35px #ff008c55,
+    inset 0 0 25px #ff008c22;
+}
+
+.card-title{
+    font-size:34px;
+    color:#ff4db8;
+    margin-bottom:25px;
+
+    text-shadow:0 0 15px #ff008c;
+}
+
+.card p{
+    line-height:2;
+    color:#ddd;
+}
+
+/* INFO */
+
+.info{
+    display:flex;
+    justify-content:space-between;
+    padding:18px 0;
+    border-bottom:1px solid #ffffff10;
+}
+
+/* SKILLS */
+
+.skill{
+    margin-bottom:28px;
+}
+
+.skill-top{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:10px;
+}
+
+.bar{
+    width:100%;
+    height:12px;
+    background:#17061f;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.fill{
+    height:100%;
+    border-radius:20px;
+
+    background:linear-gradient(90deg,#ff008c,#ff4db8);
+
+    box-shadow:
+    0 0 20px #ff008c;
+}
+
+/* WHAT I DO */
+
+.what-item{
+    display:flex;
+    gap:18px;
+    margin-bottom:28px;
+}
+
+.what-icon{
+    min-width:60px;
+    height:60px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:18px;
+
+    background:rgba(255,0,140,.12);
+
+    box-shadow:0 0 15px #ff008c55;
+
+    font-size:28px;
+}
+
+/* GAMES */
+
+.game{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    padding:15px 0;
+    border-bottom:1px solid #ffffff10;
+}
+
+.game:last-child{
+    border:none;
+}
+
+.game img{
+    width:65px;
+    height:65px;
+    object-fit:cover;
+    border-radius:16px;
+
+    border:1px solid #ff008c55;
+
+    box-shadow:0 0 15px #ff008c55;
+}
+
+/* STATS */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:25px;
+    margin-top:40px;
+}
+
+.stat{
+    text-align:center;
+
+    padding:40px 20px;
+
+    border-radius:25px;
+
+    border:1px solid #ff008c44;
+
+    background:rgba(255,255,255,.03);
+
+    box-shadow:
+    0 0 25px #ff008c11,
+    inset 0 0 25px #ff008c11;
+}
+
+.stat h1{
+    font-size:58px;
+    color:#ff4db8;
+
+    text-shadow:
+    0 0 10px #ff008c,
+    0 0 30px #ff008c;
+}
+
+/* FOOTER */
+
+footer{
+    padding:100px 20px;
+    text-align:center;
+}
+
+footer h1{
+    font-size:55px;
+    color:#ff4db8;
+    margin-bottom:15px;
+
+    text-shadow:
+    0 0 10px #ff008c,
+    0 0 35px #ff008c;
+}
+
+footer p{
+    color:#ddd;
+    margin-bottom:35px;
+    font-size:20px;
+}
+
+.footer-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:16px;
+
+    padding:18px 35px;
+
+    border-radius:20px;
+
+    text-decoration:none;
+    color:white;
+    font-size:28px;
+    font-weight:600;
+
+    border:1px solid #ff008c;
+
+    background:rgba(255,0,140,.08);
+
+    box-shadow:
+    0 0 25px #ff008c44,
+    inset 0 0 20px #ff008c22;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:1100px){
+
+    .hero{
+        text-align:center;
+    }
+
+    .hero-text h1{
+        font-size:70px;
+    }
+
+    .grid-2,
+    .grid-3,
+    .stats{
+        grid-template-columns:1fr;
+    }
+
+    .menu{
+        display:none;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="particle" style="left:10%; animation-delay:0s;"></div>
+<div class="particle" style="left:25%; animation-delay:2s;"></div>
+<div class="particle" style="left:50%; animation-delay:4s;"></div>
+<div class="particle" style="left:75%; animation-delay:1s;"></div>
+<div class="particle" style="left:90%; animation-delay:5s;"></div>
+
+<header>
+
+<div class="container">
+
+<nav>
+
+<div class="logo">&lt;/&gt; LEINN</div>
+
+<div class="menu">
+<a href="#">HOME</a>
+<a href="#about">ABOUT</a>
+<a href="#skills">SKILLS</a>
+<a href="#games">GAMES</a>
+<a href="#contact">CONTACT</a>
+</div>
+
+<a class="follow-btn"
+href="https://www.tiktok.com/@leinn_s?_r=1&_t=ZS-96Ed3JkzyQ1"
+target="_blank">
+FOLLOW ME
+</a>
+
+</nav>
+
+</div>
+
+</header>
+
+<section class="hero container">
+
+<div class="hero-image">
+<img src="anime.png">
+</div>
+
+<div class="hero-text">
+
+<h3>HELLO, I'M</h3>
+
+<h1>LEINN</h1>
+
+<div class="role">
+⬢ Minecraft Server Developer
+</div>
+
+<p>
+Saya seorang developer server Minecraft sederhana
+yang suka membuat hal-hal kreatif dan bermanfaat.
+Selain itu, saya juga suka bermain berbagai games
+dan mengeksplorasi teknologi baru.
+</p>
+
+<div class="tiktok">
+
+<div class="tiktok-left">
+
+<div class="tiktok-icon">🎵</div>
+
+<div class="tiktok-text">
+<small>FOLLOW ME ON TIKTOK</small>
+<h2>@leinn_s</h2>
+</div>
+
+</div>
+
+<div style="font-size:40px;">➜</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="about" class="container section">
+
+<div class="grid-2">
+
+<div class="card">
+
+<h2 class="card-title">ABOUT ME</h2>
+
+<p>
+Halo! Saya seorang pelajar sekaligus developer server Minecraft sederhana.
+Saya membuat server untuk bersenang-senang, belajar,
+dan berbagi pengalaman dengan banyak orang.
+Saya selalu tertarik dengan dunia teknologi,
+coding, dan komunitas gaming.
+</p>
+
+</div>
+
+<div class="card">
+
+<div class="info">
+<span>NAMA</span>
+<span>Leinn</span>
+</div>
+
+<div class="info">
+<span>ROLE</span>
+<span>Minecraft Server Developer</span>
+</div>
+
+<div class="info">
+<span>HOBI</span>
+<span>Coding, Gaming, Desain</span>
+</div>
+
+<div class="info">
+<span>LOKASI</span>
+<span>Indonesia</span>
+</div>
+
+<div class="info">
+<span>STATUS</span>
+<span>Always Learning :)</span>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="skills" class="container section">
+
+<div class="grid-3">
+
+<div class="card">
+
+<h2 class="card-title">SKILLS</h2>
+
+<div class="skill">
+<div class="skill-top">
+<span>Minecraft Plugin</span>
+<span>90%</span>
+</div>
+<div class="bar">
+<div class="fill" style="width:90%"></div>
+</div>
+</div>
+
+<div class="skill">
+<div class="skill-top">
+<span>Server Management</span>
+<span>85%</span>
+</div>
+<div class="bar">
+<div class="fill" style="width:85%"></div>
+</div>
+</div>
+
+<div class="skill">
+<div class="skill-top">
+<span>Java (Basic)</span>
+<span>70%</span>
+</div>
+<div class="bar">
+<div class="fill" style="width:70%"></div>
+</div>
+</div>
+
+<div class="skill">
+<div class="skill-top">
+<span>HTML / CSS</span>
+<span>65%</span>
+</div>
+<div class="bar">
+<div class="fill" style="width:65%"></div>
+</div>
+</div>
+
+</div>
+
+<div class="card">
+
+<h2 class="card-title">WHAT I DO</h2>
+
+<div class="what-item">
+<div class="what-icon">🚀</div>
+<div>
+<h3>Minecraft Server Developer</h3>
+<p>Membuat server Minecraft dengan fitur menarik.</p>
+</div>
+</div>
+
+<div class="what-item">
+<div class="what-icon">🖥️</div>
+<div>
+<h3>Server Management</h3>
+<p>Mengelola server agar stabil dan nyaman dimainkan.</p>
+</div>
+</div>
+
+<div class="what-item">
+<div class="what-icon">🎓</div>
+<div>
+<h3>Belajar & Berkembang</h3>
+<p>Selalu belajar teknologi baru dan mencoba hal menarik.</p>
+</div>
+</div>
+
+</div>
+
+<div id="games" class="card">
+
+<h2 class="card-title">GAMES I PLAY</h2>
+
+<div class="game">
+<img src="minecraft.jpg">
+<div>
+<h3>Minecraft</h3>
+<small>Favorite Game</small>
+</div>
+</div>
+
+<div class="game">
+<img src="valorant.jpg">
+<div>
+<h3>Valorant</h3>
+<small>Competitive</small>
+</div>
+</div>
+
+<div class="game">
+<img src="genshin.jpg">
+<div>
+<h3>Genshin Impact</h3>
+<small>Adventure</small>
+</div>
+</div>
+
+<div class="game">
+<img src="roblox.jpg">
+<div>
+<h3>Roblox</h3>
+<small>Casual</small>
+</div>
+</div>
+
+</div>
+
+</div>
+
+<div class="stats">
+
+<div class="stat">
+<h1>1+</h1>
+<p>PROJECTS</p>
+</div>
+
+<div class="stat">
+<h1>24/7</h1>
+<p>SERVER ONLINE</p>
+</div>
+
+<div class="stat">
+<h1>100%</h1>
+<p>PASSION</p>
+</div>
+
+<div class="stat">
+<h1>∞</h1>
+<p>KEEP LEARNING</p>
+</div>
+
+</div>
+
+</section>
+
+<footer id="contact">
+
+<h1>TERIMA KASIH SUDAH MAMPIR!</h1>
+
+<p>Jangan lupa follow TikTok saya ya!</p>
+
+<a class="footer-btn"
+href="https://www.tiktok.com/@leinn_s?_r=1&_t=ZS-96Ed3JkzyQ1"
+target="_blank">
+🎵 @leinn_s
+</a>
+
+</footer>
+
+</body>
+</html>
